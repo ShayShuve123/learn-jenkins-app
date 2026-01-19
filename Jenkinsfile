@@ -18,16 +18,12 @@ pipeline {
                 sh 'npm run build'
             }
         }
-
         stage('Test') {
             steps {
                 echo "Test stage"
-                sh 'ls -la /build'   
-                sh 'test -f /build/index.html'
-           
+                sh 'ls -la build'   
+                sh 'test -f build/index.html'
             }
         }
-
-
     }
 }
