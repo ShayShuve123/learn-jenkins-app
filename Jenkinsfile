@@ -13,7 +13,7 @@ pipeline {
                 sh 'ls -la'
                 sh 'npm --version'
                 sh 'node --version'
-                sh 'npm -ci'
+                sh 'npm ci'
                 echo 'Build app'
                 sh 'npm run build'
             }
