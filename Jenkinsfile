@@ -9,6 +9,7 @@ pipeline {
                     reuseNode true
                 }
             }
+            
             steps {
                 sh 'ls -la'
                 sh 'npm --version'
@@ -19,11 +20,18 @@ pipeline {
             }
         }
         stage('Test') {
+            agent {
+                docker {
+                    image 'node:18-alpine'
+                    reuseNode true
+                }
+            }
+
             steps {
                 echo "Test stage"
                 sh 'ls -la build'   
                 sh 'test -f build/index.html'
-                sh 'npm test -- --watchAll=false'
+                sh 'npm test'
             }
         }
     }
